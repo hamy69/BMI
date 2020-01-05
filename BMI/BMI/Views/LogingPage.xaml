@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BMI.Views.LogingPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Place new controls here -->
+            <Label Text="نام کاربری :"
+               FontSize="Title"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               Margin="0,150,0,0" />
+            <Entry Placeholder="User Name"
+               TextColor="Cyan"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               TabIndex="1"
+               x:Name="UID" />
+            <Label Text="کلمه عبور :"
+               FontSize="Title"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               Margin="0,25,0,0" />
+            <Entry Placeholder="Password"
+               IsPassword="True"
+               TextColor="Cyan"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               TabIndex="2"
+               x:Name="PWD" />
+            <Button Text="ورود"
+                Margin="0,50,0,0"
+                FontSize="Title"
+                TextColor="DarkMagenta"
+                BackgroundColor="LightBlue"
+                TabIndex="3"
+                Clicked="Loging_Button_Clicked" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

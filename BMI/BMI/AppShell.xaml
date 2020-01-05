@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       mc:Ignorable="d"
+       xmlns:Controls="clr-namespace:BMI.Controls"
+       xmlns:Views="clr-namespace:BMI.Views"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       Navigating="OnNavigating"
+       Navigated="OnNavigated"
+       x:Class="BMI.AppShell">
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#2c3539" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+        </Style>
+        <Style TargetType="ShellItem"
+               BasedOn="{StaticResource BaseStyle}" />
+        <Style x:Key="DomesticShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#039BE6" />
+        </Style>
+        <Style x:Key="BlackShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#000000" />
+        </Style>
+        <Style x:Key="RedShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#E30024" />
+        </Style>
+        <Style x:Key="BlueShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#202A62" />
+        </Style>
+        <Style x:Key="AboutShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#96d1ff" />
+        </Style>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <Controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+    <!-- Pages -->
+    <FlyoutItem Route="BMI"
+                Title="MainBMI"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Route="Home"
+             Title="Home"
+             Icon="tab_home.png">
+            <ShellContent Route="Loging"
+                          Title="Loging"
+                          Style="{StaticResource BlackShell}"
+                          ContentTemplate="{DataTemplate Views:LogingPage}" />
+            <ShellContent Route="SignUp"
+                          Title="Sign Up"
+                          Style="{StaticResource BlackShell}"
+                          ContentTemplate="{DataTemplate Views:SignUpPage}" />
+        </Tab>
+        <ShellContent Route="About"
+                      Title="About"
+                      Style="{StaticResource AboutShell}"
+                      Icon="tab_about.png"
+                      ContentTemplate="{DataTemplate Views:AboutPage}" />
+    </FlyoutItem>
+    <!--MenuItem-->
+    <MenuItem Text="Setings"
+              IconImageSource="tab_setings.png"
+              Command="{Binding SettingPageCommand}"/>
+</Shell>
