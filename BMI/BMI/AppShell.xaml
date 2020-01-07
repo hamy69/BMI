@@ -64,17 +64,26 @@
     <FlyoutItem Route="BMI"
                 Title="MainBMI"
                 FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Route="Home"
-             Title="Home"
-             Icon="tab_home.png">
-            <ShellContent Route="Loging"
-                          Title="Loging"
+        <Tab Route="Weight"
+             Title="Weight"
+             Icon="tab_weight.png">
+            <ShellContent Route="BMI"
+                          Title="BMI"
                           Style="{StaticResource BlackShell}"
-                          ContentTemplate="{DataTemplate Views:LogingPage}" />
-            <ShellContent Route="SignUp"
-                          Title="Sign Up"
+                          ContentTemplate="{DataTemplate Views:BMIPage}" />
+            <ShellContent Route="Histogram"
+                          Title="Histogram"
                           Style="{StaticResource BlackShell}"
-                          ContentTemplate="{DataTemplate Views:SignUpPage}" />
+                          ContentTemplate="{DataTemplate Views:HistogramofBMIPage}" />
+        </Tab>
+        <Tab Route="Calorie"
+             Title="Calorie"
+             Icon="tab_cookieBite.png">
+            <ShellContent Route="Calorie"
+                          Title="Calorie"
+                          Style="{StaticResource BlackShell}"
+                          ContentTemplate="{DataTemplate Views:caloriePage}"/>
+
         </Tab>
         <ShellContent Route="About"
                       Title="About"
@@ -84,6 +93,6 @@
     </FlyoutItem>
     <!--MenuItem-->
     <MenuItem Text="Setings"
-              IconImageSource="tab_setings.png"
+              IconImageSource="tab_cogs.png"
               Command="{Binding SettingPageCommand}"/>
 </Shell>

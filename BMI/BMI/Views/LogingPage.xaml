@@ -4,41 +4,99 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="BMI.Views.LogingPage">
+             xmlns:behavior="clr-namespace:BMI.Behaviors"
+             x:Class="BMI.Views.LogingPage"
+             x:Name="BMILoging"
+             BackgroundColor="Transparent"
+             Title="BMI Loging"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+        <AbsoluteLayout Margin="5,0,5,5">
             <!-- Place new controls here -->
-            <Label Text="نام کاربری :"
-               FontSize="Title"
-               TextColor="Black"
-               HorizontalOptions="Center"
-               Margin="0,150,0,0" />
-            <Entry Placeholder="User Name"
-               TextColor="Cyan"
-               FontSize="Large"
-               HorizontalTextAlignment="Center"
-               TabIndex="1"
-               x:Name="UID" />
-            <Label Text="کلمه عبور :"
-               FontSize="Title"
-               TextColor="Black"
-               HorizontalOptions="Center"
-               Margin="0,25,0,0" />
-            <Entry Placeholder="Password"
-               IsPassword="True"
-               TextColor="Cyan"
-               FontSize="Large"
-               HorizontalTextAlignment="Center"
-               TabIndex="2"
-               x:Name="PWD" />
-            <Button Text="ورود"
-                Margin="0,50,0,0"
-                FontSize="Title"
-                TextColor="DarkMagenta"
-                BackgroundColor="LightBlue"
-                TabIndex="3"
-                Clicked="Loging_Button_Clicked" />
+            <FlexLayout IsVisible="True" 
+                        JustifyContent="SpaceEvenly" 
+                        Direction="Column" 
+                        AlignItems="Center" 
+                        Margin="30,0,30,0">
+                <Frame CornerRadius="100"
+                       HeightRequest="140"
+                       WidthRequest="140"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                    <Image x:Name="UserAvatar"
+                           Source="user_solid.png"
+                           FlexLayout.AlignSelf="Center"
+                           BackgroundColor="Transparent"/>
+                </Frame>
+                <Label Text="نام کاربری :"
+                       FontSize="Title"
+                       TextColor="Black"
+                       Margin="0,150,0,0" />
+                <Entry x:Name="EmailIDEntry"
+                       Placeholder="Email ID"
+                       ReturnType="Next"
+                       Keyboard="Email"
+                       FontSize="Medium"
+                       FlexLayout.AlignSelf="Stretch"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black">
+                    <Entry.Behaviors>
+                        <behavior:EmailValidatorBehavior/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="کلمه عبور :"
+                       FontSize="Title"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       Margin="0,25,0,0" />
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Password"
+                       ReturnType="Next"
+                       IsPassword="True"
+                       MaxLength="12"
+                       FontSize="Medium"
+                       FlexLayout.AlignSelf="Stretch"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black">
+                    <Entry.Behaviors>
+                        <behavior:PasswordValidationBehavior/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label x:Name="warningLabel"
+                       Text="" IsVisible="False"
+                       TextColor="Blue"
+                       FontSize="15"
+                       BackgroundColor="Transparent"
+                       FlexLayout.AlignSelf="End"/>
+                <Button x:Name="Loging"
+                        Text="ورود"
+                        Clicked="Loging_Button_Clicked"
+                        FontSize="Medium"
+                        TextColor="White"
+                        BorderColor="Black"
+                        BackgroundColor="#90ee02"
+                        CornerRadius="5"
+                        FlexLayout.AlignSelf="Stretch"
+                        HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="forgetLabel"
+                       Text="Forget Password?"
+                       TextColor="Blue" 
+                       FontSize="15"
+                       BackgroundColor="Transparent" 
+                       FlexLayout.AlignSelf="End"/>
 
-        </StackLayout>
+                <Button x:Name="signUp"
+                        Text="افزودن کاربر"
+                        Clicked="signUp_ClickedEvent"
+                        FontSize="13"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        FlexLayout.AlignSelf="Start"/>
+                
+            </FlexLayout>
+        </AbsoluteLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -5804,16 +5804,31 @@ namespace BMI.Droid
 			public const int tab_about = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int tab_feed = 2131165305;
+			public const int tab_cogs = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int tab_home = 2131165306;
+			public const int tab_cookieBite = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int tooltip_frame_dark = 2131165307;
+			public const int tab_feed = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int tooltip_frame_light = 2131165308;
+			public const int tab_home = 2131165308;
+			
+			// aapt resource value: 0x7F07007D
+			public const int tab_users_cog = 2131165309;
+			
+			// aapt resource value: 0x7F07007E
+			public const int tab_weight = 2131165310;
+			
+			// aapt resource value: 0x7F07007F
+			public const int tooltip_frame_dark = 2131165311;
+			
+			// aapt resource value: 0x7F070080
+			public const int tooltip_frame_light = 2131165312;
+			
+			// aapt resource value: 0x7F070081
+			public const int user_solid = 2131165313;
 			
 			static Drawable()
 			{

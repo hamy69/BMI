@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BMI.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +17,7 @@ namespace BMI
         protected override void OnStart()
         {
             // Handle when your app starts
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new LogingPage());
         }
 
         protected override void OnSleep()
