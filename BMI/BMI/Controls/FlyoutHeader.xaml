@@ -8,7 +8,7 @@
             <Image Aspect="AspectFill"
                Source="Flyout_Background.jpg"
                Opacity="0.6"/>
-            <Label Text="Welcome to BMI"
+            <Label Text="{Binding FullName}"
                TextColor="White"
                FontAttributes="Bold"
                HorizontalOptions="Center"

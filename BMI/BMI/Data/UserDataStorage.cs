@@ -13,10 +13,10 @@ namespace BMI.Data
     {
         public bool ExistDB = DependencyService.Get<ISQLiteDB>().CheckSQLiteDBExist();
         //conection String//##########################################################
-        private SQLiteConnection _SQLiteConnection;
+        private SQLiteConnection _SQLiteConnection = DependencyService.Get<ISQLiteDB>().GetSQLiteConnection();
         public void UserDB()
         {
-            _SQLiteConnection = DependencyService.Get<ISQLiteDB>().GetSQLiteConnection();
+            //_SQLiteConnection = DependencyService.Get<ISQLiteDB>().GetSQLiteConnection();
             _SQLiteConnection.CreateTable<Users>();
             //var t= _SQLiteConnection.FindWithQuery<Users>("select * from users where id == ?", "h");
         }
@@ -30,14 +30,18 @@ namespace BMI.Data
         {
             return _SQLiteConnection.Table<Users>().FirstOrDefault(t => t.ID == id);
         }
+        public Users GetSpecificUser(string userName)
+        {
+            return _SQLiteConnection.Table<Users>().FirstOrDefault(t => t.UserName == userName);
+        }
         public void DeleteUser(int id)
         {
             _SQLiteConnection.Delete<Users>(id);
         }
         public string AddUser(Users user)
         {
-            var data = _SQLiteConnection.Table<Users>();
-            var d1 = data.Where(x => x.UserName == user.UserName && x.FullName == user.FullName).FirstOrDefault();
+            TableQuery<Users> data = _SQLiteConnection.Table<Users>();
+            Users d1 = data.Where(x => x.UserName == user.UserName && x.FullName == user.FullName).FirstOrDefault();
 
             if (d1 == null)
             {
@@ -50,8 +54,8 @@ namespace BMI.Data
         }
         public bool updateUserValidation(string userid)
         {
-            var data = _SQLiteConnection.Table<Users>();
-            var d1 = (from values in data
+            TableQuery<Users> data = _SQLiteConnection.Table<Users>();
+            Users d1 = (from values in data
                       where values.UserName == userid
                       select values).Single();
 
@@ -65,8 +69,8 @@ namespace BMI.Data
         }
         public bool updateUser(string username, string pwd)
         {
-            var data = _SQLiteConnection.Table<Users>();
-            var d1 = (from values in data
+            TableQuery<Users> data = _SQLiteConnection.Table<Users>();
+            Users d1 = (from values in data
                       where values.UserName == username
                       select values).Single();
             if (true)
@@ -78,10 +82,10 @@ namespace BMI.Data
             else
                 return false;
         }
-        public bool LoginValidate(string userName1, string pwd1)
+        public bool LoginValidate(string userName, string pwd)
         {
-            var data = _SQLiteConnection.Table<Users>();
-            var d1 = data.Where(x => x.UserName == userName1 && x.password == pwd1).FirstOrDefault();
+            TableQuery<Users> data = _SQLiteConnection.Table<Users>();
+            Users d1 = data.Where(x => x.UserName == userName && x.password == pwd).FirstOrDefault();
             
             if (d1 != null)
             {
@@ -98,7 +102,7 @@ namespace BMI.Data
         public int CheckUser(string UID, string PWD)
         {
             _SQLiteConnection.CreateTable<Users>();
-            var table = _SQLiteConnection.FindWithQuery<Users>("SELECT * FROM users WHERE  UserName == ? AND password == ?", UID, PWD);
+            Users table = _SQLiteConnection.FindWithQuery<Users>("SELECT * FROM users WHERE  UserName == ? AND password == ?", UID, PWD);
             foreach (var id in table.ID.ToString())
             {
                 return Convert.ToInt16(id);

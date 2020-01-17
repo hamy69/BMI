@@ -7,8 +7,9 @@
              xmlns:behavior="clr-namespace:BMI.Behaviors"
              x:Class="BMI.Views.LogingPage"
              x:Name="BMILoging"
-             BackgroundColor="Transparent"
+             BackgroundColor="White"
              Title="BMI Loging"
+             NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <ScrollView>
@@ -66,7 +67,7 @@
                 </Entry>
                 <Label x:Name="warningLabel"
                        Text="" IsVisible="False"
-                       TextColor="Blue"
+                       TextColor="Red"
                        FontSize="15"
                        BackgroundColor="Transparent"
                        FlexLayout.AlignSelf="End"/>
@@ -89,7 +90,7 @@
 
                 <Button x:Name="signUp"
                         Text="افزودن کاربر"
-                        Clicked="signUp_ClickedEvent"
+                        Clicked="SignUp_ClickedEvent"
                         FontSize="13"
                         TextColor="Black"
                         BackgroundColor="Transparent"

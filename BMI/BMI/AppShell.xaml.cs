@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using BMI.Views;
 using System.Windows.Input;
+using BMI.Models;
+using BMI.Data;
 
 namespace BMI
 {
@@ -15,22 +17,29 @@ namespace BMI
     [DesignTimeVisible(false)]
     public partial class AppShell : Shell
     {
-        Dictionary<string, Type> routes = new Dictionary<string, Type>();
+        readonly Dictionary<string, Type> routes = new Dictionary<string, Type>();
         public Dictionary<string, Type> Routes { get { return routes; } }
 
-        public ICommand SettingPageCommand => new Command(async () => await NavigateToSettingAsync());
+        //public ICommand SettingPageCommand => new Command(async () => await NavigateToSettingAsync());
+        //public ICommand LogoutCommand => new Command(LogoutToLogingPage);
 
-        public AppShell()
+        readonly Users user = new Users();
+        private readonly UserDataStorage userDB = new UserDataStorage();
+        public AppShell(int IuserID)
         {
             InitializeComponent();
             RegisterRoutes();
-            BindingContext = this;
+            
+            user = userDB.GetSpecificUser(IuserID);
+            BindingContext = user;
+            //BindingContext = this;
         }
 
         void RegisterRoutes()
         {
-            routes.Add("Loging", typeof(LogingPage));
-            routes.Add("SignUp", typeof(SignUpPage));
+            routes.Add("BMI", typeof(BMIPage));
+            routes.Add("Histogram", typeof(HistogramofBMIPage));
+            routes.Add("Calorie", typeof(caloriePage));
             routes.Add("About", typeof(AboutPage));
 
             foreach (var item in routes)
@@ -39,24 +48,42 @@ namespace BMI
             }
         }
 
-        async Task NavigateToSettingAsync()
+        /*async Task NavigateToSettingAsync()
         {
             Shell.Current.FlyoutIsPresented = false;
             await Navigation.PushAsync(new SettingsPage());
         }
 
+        void LogoutToLogingPage()
+        {
+            Shell.Current.FlyoutIsPresented = false;
+            Application.Current.MainPage = new NavigationPage(new LogingPage());
+            //await Navigation.PushAsync(new LogingPage());
+        }*/
+
         private void OnNavigating(object sender, ShellNavigatingEventArgs e)
         {
             // Cancel any back navigation
-            //if (e.Source == ShellNavigationSource.Pop)
-            //{
-            //    e.Cancel();
-            //}
+            if (e.Source == ShellNavigationSource.Pop)
+            {
+                e.Cancel();
+            }
         }
         
         private void OnNavigated(object sender, ShellNavigatedEventArgs e)
         {
 
+        }
+
+        private async void MenuItem_SettingPage_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
+            await Navigation.PushAsync(new SettingsPage());
+        }
+        private void MenuItem_Logout_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
+            Application.Current.MainPage = new NavigationPage(new LogingPage());
         }
     }
 }

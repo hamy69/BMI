@@ -5,7 +5,10 @@
   <style name="Theme.Splash" parent="android:Theme">
     <item name="android:windowBackground">@drawable/SplashScreen</item>
     <item name="android:windowNoTitle">true</item>
-    <item name="android:colorBackground">#000000</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowActionBar">true</item>
+    <item name="android:colorBackground">@color/splash_background</item>
   </style>
 
   <style name="MainTheme" parent="MainTheme.Base">

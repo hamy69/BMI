@@ -93,6 +93,9 @@
     </FlyoutItem>
     <!--MenuItem-->
     <MenuItem Text="Setings"
-              IconImageSource="tab_cogs.png"
-              Command="{Binding SettingPageCommand}"/>
+              Clicked="MenuItem_SettingPage_Clicked"
+              IconImageSource="tab_cogs.png"/>
+    <MenuItem Text="Logout"
+              IconImageSource="tab_exit.png"
+              Clicked="MenuItem_Logout_Clicked"/>
 </Shell>

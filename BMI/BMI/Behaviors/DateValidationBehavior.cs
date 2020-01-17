@@ -15,12 +15,8 @@ namespace BMI.Behaviors
 
         private void Datepicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            DateTime value = e.NewDate;
-            int year = DateTime.Now.Year;
-            int selyear = value.Year;
-            int result = selyear - year;
             bool isValid = false;
-            if (result <= 100 && result > 0)
+            if ((DateTime.Now.Year- e.NewDate.Year) <= 100 && (DateTime.Now.Year - e.NewDate.Year) > 0)
             {
                 isValid = true;
             }

@@ -8,6 +8,7 @@
              x:Class="BMI.Views.SignUpPage"
              x:Name="SignUp"
              Title="Sign Up Page"
+             BackgroundColor="White"
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
@@ -41,15 +42,6 @@
                         <behavior:EmailValidatorBehavior/>
                     </Entry.Behaviors>
                 </Entry>
-                <Entry x:Name="fullNameEntry"
-                       Placeholder="Full Name"
-                       ReturnType="Next"
-                       MaxLength="15"
-                       FontSize="Medium"
-                       FlexLayout.AlignSelf="Stretch"
-                       HorizontalOptions="CenterAndExpand"
-                       TextColor="Black"
-                       Keyboard="Text"/>
                 <Entry x:Name="passwordEntry"
                        Placeholder="Password"
                        ReturnType="Next"
@@ -83,6 +75,15 @@
                        FontSize="15"
                        BackgroundColor="Transparent"
                        FlexLayout.AlignSelf="End"/>
+                <Entry x:Name="fullNameEntry"
+                       Placeholder="Full Name"
+                       ReturnType="Next"
+                       MaxLength="15"
+                       FontSize="Medium"
+                       FlexLayout.AlignSelf="Stretch"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       Keyboard="Text"/>
                 <Entry x:Name="lengthEntry"
                        Placeholder="Length (cm)"
                        ReturnType="Next"
@@ -96,6 +97,35 @@
                         <behavior:NumberValidationBehavior/>
                     </Entry.Behaviors>
                 </Entry>
+                <Label x:Name="lengthWarLabel"
+                       Text=""
+                       IsVisible="False"
+                       TextColor="Blue"
+                       FontSize="15"
+                       BackgroundColor="Transparent"
+                       FlexLayout.AlignSelf="End"/>
+                <Label Text="Gender:" 
+                       FontSize="Small"
+                       FlexLayout.AlignSelf="Start"
+                       TextColor="Black"/>
+                <Picker x:Name="GenderPicker"
+                        Title="Select Gender"
+                        FontSize="Medium"
+                        FlexLayout.AlignSelf="Stretch"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="Black">
+                        <!--Picker.Items>
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                        </Picker.Items-->
+                </Picker>
+                <Label x:Name="GenderWarLabel"
+                       Text=""
+                       IsVisible="False"
+                       TextColor="Blue"
+                       FontSize="15"
+                       BackgroundColor="Transparent"
+                       FlexLayout.AlignSelf="End"/>
                 <Label Text="Birthdate:" 
                        FontSize="Small"
                        FlexLayout.AlignSelf="Start"

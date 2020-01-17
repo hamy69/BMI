@@ -24,8 +24,18 @@ namespace BMI.Droid.Persistence
         private string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
         public SQLiteConnection GetSQLiteConnection()
         {
-            string path = Path.Combine(documentsPath, "Data/SQLite.db3");
-            return new SQLiteConnection(path);
+            string path = Path.Combine(documentsPath, "Data");
+            if (CheckSQLiteDBExist())
+            {
+                path = Path.Combine(path, "SQLite.db3");
+            }
+            else
+            {
+                CreateDB_folder_path(path);
+                path = Path.Combine(path, "SQLite.db3");
+            }
+            SQLiteConnection connection = new SQLiteConnection(path);
+            return connection;
         }
 
         public bool CheckSQLiteDBExist()
@@ -39,6 +49,11 @@ namespace BMI.Droid.Persistence
             {
                 return false;
             }
+        }
+        private void CreateDB_folder_path(string applicationFolderPath)
+        {
+            // Create the folder path.
+            System.IO.Directory.CreateDirectory(applicationFolderPath);
         }
     }
 }

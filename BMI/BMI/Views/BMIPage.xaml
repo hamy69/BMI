@@ -4,12 +4,37 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:behavior="clr-namespace:BMI.Behaviors"
              x:Class="BMI.Views.BMIPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <TableView>
+            <TableRoot>
+                <TableSection Title="BMI calcluator">
+                    <TextCell Text="{Binding UserName}"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name="WeightEntry"
+                                   Placeholder="Weight (Kgr)"
+                                   Keyboard="Numeric"
+                                   >
+                                <Entry.Behaviors>
+                                    <behavior:MaxLengthValidatorBehavior MaxLength="6"/>
+                                    <behavior:FloatValidationBehavior/>
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Stepper x:Name="WeightStepper"
+                                     Maximum="300"
+                                     Increment="0.5"
+                                     Value="{Binding Source={x:Reference WeightEntry}, Path=Text}"/>
+                        </StackLayout>
+                        
+                    </ViewCell>
+                    
+                    
+                </TableSection>
+            </TableRoot>
+            
+        </TableView>
+        
     </ContentPage.Content>
 </ContentPage>
