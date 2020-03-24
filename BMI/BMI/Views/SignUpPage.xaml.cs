@@ -1,5 +1,4 @@
-﻿using BMI.Data;
-using BMI.Models;
+﻿using BMI.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,7 +32,8 @@ namespace BMI.Views
         private async void signUp_Clicked(object sender, EventArgs e)
         {
             //SignupValidation_ButtonClicked
-            UserDataStorage userDB = new UserDataStorage();
+            //UserDataStorageDirect userDB = new UserDataStorageDirect(App.DBPath);
+            //userDB.UserDB();
             Users NewUser = new Users();
 
 
@@ -83,7 +83,7 @@ namespace BMI.Views
                 NewUser.birthdate = birthdatePicker.Date;
                 try
                 {
-                    var retrunvalue = userDB.AddUser(NewUser);
+                    var retrunvalue = App.Database.SaveUser(NewUser);
                     if (retrunvalue == "Sucessfully Added")
                     {
                         await DisplayAlert("User Add", retrunvalue, "OK");

@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BMI;
 using BMI.Views;
-using BMI.Data;
+using System.IO;
 
 namespace BMI.Views
 {
@@ -42,11 +42,19 @@ namespace BMI.Views
 
         private void Loging_Button_Clicked(object sender, EventArgs e)
         {
-            UserDataStorage userD = new UserDataStorage();
-            if (!userD.ExistDB) userD.UserDB();
-            if (userD.LoginValidate(EmailIDEntry.Text, PasswordEntry.Text))
+            //UserDataStorageDirect userD = new UserDataStorageDirect(App.DBPath);
+            //if (!userD.ExistDB) userD.UserDB();
+            if (App.Database.LoginValidateAsync(EmailIDEntry.Text, PasswordEntry.Text))
             {
-                Application.Current.MainPage = new AppShell(userD.GetSpecificUser(EmailIDEntry.Text).ID);
+                // set static app  parameters 
+                App.UserID = App.Database.GetUser(EmailIDEntry.Text).ID;
+                // set cache file for another time login
+                string _CacheTime = DateTime.UtcNow.ToString();
+                string _CacheID = App.UserID.ToString();
+                string _Cache = $"{_CacheTime}\n{_CacheID}";
+                File.WriteAllText(App.CachePath, _Cache);
+                // log to personal page
+                Application.Current.MainPage = new AppShell();
             }
             else
             {

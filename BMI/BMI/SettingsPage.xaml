@@ -6,10 +6,66 @@
              mc:Ignorable="d"
              x:Class="BMI.SettingsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to settings!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <TableView Intent="Settings" HasUnevenRows="True">
+            <TableRoot>
+                <TableSection Title="User setings" TextColor="Black">
+                    <ViewCell Height="170" IsEnabled="False">
+                        <StackLayout>
+                            <Frame CornerRadius="50"
+                                   Margin="0,15,0,5"
+                                   HeightRequest="100"
+                                   WidthRequest="100"
+                                   HorizontalOptions="Center"
+                                   Padding="0"
+                                   IsClippedToBounds="True"
+                                   HasShadow="True">
+                                <Image x:Name="UserAvatar"
+                                       Source="user_solid.png"
+                                       FlexLayout.AlignSelf="Center"
+                                       BackgroundColor="Transparent"/>
+                            </Frame>
+                            <Label Text="{Binding FullName}"
+                                   TextColor="DarkCyan"
+                                   FontSize="Large"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                    <TextCell x:Name="UpdateUser"
+                              Text="Update user"
+                              Detail="change your body information"
+                              TextColor="DarkCyan" 
+                              DetailColor="DarkGray"/>
+                    <TextCell x:Name="WipeUserData"
+                              Text="Clear user data" 
+                              Detail="clean all weight and calorie datas entered by user" 
+                              TextColor="DarkCyan" 
+                              DetailColor="DarkGray"
+                              Tapped="WipeUserData_Tapped"/>
+                    <TextCell x:Name="RemoveCourentUser"
+                              Text="Remove user"
+                              TextColor="DarkCyan" />
+                </TableSection>
+                <TableSection Title="Privacy" TextColor="Black">
+                    <TextCell x:Name="ChangePassword"
+                              Text="Change your password"
+                              TextColor="DarkCyan"
+                              Tapped="ChangePassword_Tapped"/>
+                </TableSection>
+                <TableSection Title="App setings" TextColor="Black">
+                    <TextCell x:Name="AppInfo"
+                              Text="App Info"
+                              Detail="Veresion "
+                              TextColor="DarkCyan"
+                              DetailColor="DarkGray"
+                              Tapped="AppInfo_Tapped"/>
+                    <TextCell x:Name="PhoneSeting"
+                              Text="Uninstall App"
+                              TextColor="DarkRed"
+                              Tapped="PhoneSeting_Tapped"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
     </ContentPage.Content>
 </ContentPage>

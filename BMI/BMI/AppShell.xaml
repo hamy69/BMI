@@ -54,7 +54,7 @@
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
-                    Value="#96d1ff" />
+                    Value="#448AFF" />
         </Style>
     </Shell.Resources>
     <Shell.FlyoutHeader>

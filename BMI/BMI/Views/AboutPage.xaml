@@ -6,10 +6,84 @@
              mc:Ignorable="d"
              x:Class="BMI.Views.AboutPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="this is About pages!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout BackgroundColor="#0D47A1"
+                         VerticalOptions="FillAndExpand" 
+                         HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" 
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center">
+                    <Image x:Name="imageLogo"
+                           Source="Logo.png"
+                           VerticalOptions="Center"
+                           HeightRequest="150"/>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView  Grid.Row="1"
+                         BackgroundColor="White">
+                <StackLayout  Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                    <Label x:Name="AppInformation"  FontSize="22">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="BMI" FontAttributes="Bold" FontSize="22" />
+                                    <Span Text=" " />
+                                    <Span Text="1.0"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="Black"
+                           FontSize="Medium"
+                           LineBreakMode="CharacterWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="The purpose of this app is helping people to control their weight, be inshape and be healthy, So this app uses your input data like your weight, calories and etc."/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="Black"
+                           FontSize="Medium"
+                           LineBreakMode="CharacterWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="In the future we want to use modern technologies for developing this app."/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="Black"
+                           FontSize="Medium"
+                           LineBreakMode="CharacterWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="We'll add alot of options like diet plan and exercise program."/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="Black"
+                           FontSize="Medium"
+                           LineBreakMode="CharacterWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="We hope that we can help you in this way"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -3,13 +3,71 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:SyncFusionChart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              mc:Ignorable="d"
              x:Class="BMI.Views.caloriePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10,15,10,15">
+            <Label x:Name="Today"
+                   FontAttributes="Italic,Bold"
+                   TextColor="Black"
+                   FontSize="Title"
+                   HorizontalTextAlignment="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Today : "
+                       FontSize="Large"
+                       TextColor="Black"
+                       Padding="25,15,25,0"
+                       HorizontalTextAlignment="Start"/>
+                <Label x:Name="DayRes"
+                       FontSize="Large"
+                       TextColor="Black"
+                       Padding="25,15,25,0"
+                       HorizontalTextAlignment="Start"/>
+                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Physical activity:"
+                       FontSize="Default"
+                       TextColor="Black"
+                       Padding="25,15,25,0"
+                       HorizontalTextAlignment="Start"/>
+                <Picker x:Name="ActivityPicker"
+                        Title="Physical activity level?"
+                        FontSize="Default"
+                        FlexLayout.AlignSelf="Stretch"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="Black"
+                        SelectedIndexChanged="ActivityPicker_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>low</x:String>
+                        <x:String>medium</x:String>
+                        <x:String>above medium</x:String>
+                        <x:String>high</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout x:Name="ChartStack"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                <SyncFusionChart:SfChart x:Name="sfCH"
+                                         HeightRequest="200"
+                                         WidthRequest="300"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center"/>
+            </StackLayout>
+            <Button Text="+"
+                    x:Name="AddNewCalorie"
+                    BackgroundColor="#a0eE02"
+                    TextColor="White"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    WidthRequest="55"
+                    HeightRequest="55"
+                    CornerRadius="100"
+                    HorizontalOptions="End"
+                    VerticalOptions="EndAndExpand"
+                    Clicked="AddNewCalorie_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

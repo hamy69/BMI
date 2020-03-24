@@ -134,7 +134,10 @@
                             FontSize="Medium"
                             FlexLayout.AlignSelf="Stretch"
                             HorizontalOptions="CenterAndExpand"
-                            TextColor="Black">
+                            TextColor="Black"
+                            MaximumDate="2020/01/01"
+                            MinimumDate="1900/01/01">
+                    <DatePicker.Format>yyyy/MM/dd</DatePicker.Format>
                     <DatePicker.Behaviors>
                         <behavior:DateValidationBehavior/>
                     </DatePicker.Behaviors>

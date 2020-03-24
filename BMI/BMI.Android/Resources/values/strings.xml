@@ -2,7 +2,7 @@
 <resources>
   <string name="Author">¶Parvanehzadeh</string>
   <string name="Company">©Esharf Hegmataneh Keyhan</string>
-  <string name="app_name">BMI</string>
+  <string name="app_name">FibRip</string>
   <string name="action_settings">Settings</string>
   <string name="hello_world">Hello world!</string>
   <string name="auto_complete">AutoComplete</string>

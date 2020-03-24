@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:behavior="clr-namespace:BMI.Behaviors"
+             Title="Enter New Weight"
+             x:Class="BMI.Views.BMIEntryPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  Padding="10,15,10,0">
+                <Grid Padding="10,35,10,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="WeightEntry"
+                           Placeholder="Weight (Kgr)"
+                           Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <behavior:MaxLengthValidatorBehavior MaxLength="6"/>
+                            <behavior:FloatValidationBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Stepper x:Name="WeightStepper"
+                             
+                             Maximum="300"
+                             Increment="0.5"
+                             Grid.Column="1"
+                             Value="{Binding Source={x:Reference WeightEntry}, Path=Text}"/>
+                </Grid>
+                <Button x:Name="Submit"
+                        BackgroundColor="#a0eE02"
+                        TextColor="DarkBlue"
+                        CornerRadius="7"
+                        Text="Bmi"
+                        Clicked="Submit_ClickedAsync"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

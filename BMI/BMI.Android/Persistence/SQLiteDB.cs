@@ -27,13 +27,17 @@ namespace BMI.Droid.Persistence
             string path = Path.Combine(documentsPath, "Data");
             if (CheckSQLiteDBExist())
             {
+                
                 path = Path.Combine(path, "SQLite.db3");
+                //DeleteDB(path);
+
             }
             else
             {
                 CreateDB_folder_path(path);
                 path = Path.Combine(path, "SQLite.db3");
             }
+            
             SQLiteConnection connection = new SQLiteConnection(path);
             return connection;
         }
@@ -54,6 +58,12 @@ namespace BMI.Droid.Persistence
         {
             // Create the folder path.
             System.IO.Directory.CreateDirectory(applicationFolderPath);
+            
+        }
+        private void DeleteDB(string DBPath)
+        {
+            // Delete the folder path.
+            System.IO.File.Delete(DBPath);
         }
     }
 }

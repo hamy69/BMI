@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SkiaSharp;
+using SkiaSharp.Views.Forms;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,7 @@ namespace BMI.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FlyoutHeader : ContentView
     {
+
         public FlyoutHeader()
         {
             InitializeComponent();

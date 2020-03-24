@@ -3,13 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:SyncFusionChart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              mc:Ignorable="d"
              x:Class="BMI.Views.HistogramofBMIPage">
+    <!--ContentPage.BindingContext>
+        <local:BMIHistogramViewModel/>
+    </ContentPage.BindingContext-->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="ChartStack"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="Black">
+            <SyncFusionChart:SfChart x:Name="sfCH"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"/>
+            <!--microcharts:ChartView x:Name="chartView"
+                                   /-->
+            
+            <!--Chart:SfChart>
+
+                <Chart:SfChart.Title>
+                    <Chart:ChartTitle Text="BMIs"/>
+                </Chart:SfChart.Title>
+                
+                <Chart:SfChart.PrimaryAxis>
+                    <Chart:CategoryAxis/>
+                </Chart:SfChart.PrimaryAxis>
+
+                <Chart:SfChart.SecondaryAxis>
+                    <Chart:NumericalAxis/>
+                </Chart:SfChart.SecondaryAxis>
+
+
+                <Chart:ColumnSeries ItemsSource="{Binding BMIs}"
+                                    XBindingPath="time"
+                                    YBindingPath="BMI"/>
+                
+                <Chart:ColumnSeries ItemsSource="{Binding BMIs}"
+                                    XBindingPath="time"
+                                    YBindingPath="BMR"/>
+            </Chart:SfChart-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

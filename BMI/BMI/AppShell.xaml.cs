@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using BMI.Views;
 using System.Windows.Input;
 using BMI.Models;
-using BMI.Data;
+using System.IO;
 
 namespace BMI
 {
@@ -23,15 +23,15 @@ namespace BMI
         //public ICommand SettingPageCommand => new Command(async () => await NavigateToSettingAsync());
         //public ICommand LogoutCommand => new Command(LogoutToLogingPage);
 
-        readonly Users user = new Users();
-        private readonly UserDataStorage userDB = new UserDataStorage();
-        public AppShell(int IuserID)
+        //readonly Users user = new Users();
+        //private readonly UserDataStorage userDB = new UserDataStorage();
+        public AppShell()
         {
             InitializeComponent();
             RegisterRoutes();
             
-            user = userDB.GetSpecificUser(IuserID);
-            BindingContext = user;
+            //user = App.User;
+            BindingContext = (Users)App.User;
             //BindingContext = this;
         }
 
@@ -66,7 +66,7 @@ namespace BMI
             // Cancel any back navigation
             if (e.Source == ShellNavigationSource.Pop)
             {
-                e.Cancel();
+                //e.Cancel();
             }
         }
         
@@ -78,11 +78,16 @@ namespace BMI
         private async void MenuItem_SettingPage_Clicked(object sender, EventArgs e)
         {
             Shell.Current.FlyoutIsPresented = false;
+            //await Shell.Current.Navigation.PushAsync(new SettingsPage());
             await Navigation.PushAsync(new SettingsPage());
         }
         private void MenuItem_Logout_Clicked(object sender, EventArgs e)
         {
+            // Hide Flyout menu
             Shell.Current.FlyoutIsPresented = false;
+            // Distroy loging Cache 
+            File.Delete(App.CachePath);
+            // Navigate to loging Page
             Application.Current.MainPage = new NavigationPage(new LogingPage());
         }
     }

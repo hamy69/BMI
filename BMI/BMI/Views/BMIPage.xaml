@@ -4,37 +4,64 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:BMI;assembly=BMI"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:behavior="clr-namespace:BMI.Behaviors"
              x:Class="BMI.Views.BMIPage">
     <ContentPage.Content>
-        <TableView>
-            <TableRoot>
-                <TableSection Title="BMI calcluator">
-                    <TextCell Text="{Binding UserName}"/>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Entry x:Name="WeightEntry"
-                                   Placeholder="Weight (Kgr)"
-                                   Keyboard="Numeric"
-                                   >
-                                <Entry.Behaviors>
-                                    <behavior:MaxLengthValidatorBehavior MaxLength="6"/>
-                                    <behavior:FloatValidationBehavior/>
-                                </Entry.Behaviors>
-                            </Entry>
-                            <Stepper x:Name="WeightStepper"
-                                     Maximum="300"
-                                     Increment="0.5"
-                                     Value="{Binding Source={x:Reference WeightEntry}, Path=Text}"/>
-                        </StackLayout>
-                        
-                    </ViewCell>
-                    
-                    
-                </TableSection>
-            </TableRoot>
-            
-        </TableView>
-        
+        <RelativeLayout Padding="10,15,10,15" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <StackLayout x:Name="UserStack"
+                         Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Constant=25}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.15}">
+                <Image Source="user_solid.png"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"
+                       HeightRequest="30"
+                       WidthRequest="30"/>
+                <Label Text="Dear "
+                       FontAttributes="Italic,Bold"
+                       TextColor="Black"
+                       FontSize="Title"
+                       VerticalOptions="Center"/>
+                <Label x:Name="UserDetail"
+                       Text="{Binding FullName}"
+                       FontAttributes="Italic,Bold"
+                       TextColor="Black"
+                       FontSize="Title"
+                       VerticalOptions="Center"/>
+            </StackLayout>
+            <ScrollView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.7}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15, Constant=25}"
+                        BackgroundColor="Transparent">
+                <StackLayout>
+                    <Label x:Name="ResBMI"
+                       Text="BMI ="
+                       FontSize="Large"
+                       TextColor="Black"
+                       Padding="25,15,25,0"/>
+                    <Label x:Name="ResCal"
+                       Text="W"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       Padding="25,15,25,0"/>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="+"
+                        x:Name="AddNewWeight"
+                        BackgroundColor="#a0eE02"
+                        TextColor="White"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        WidthRequest="56"
+                        HeightRequest="56"
+                        CornerRadius="28"
+                        Clicked="AddNewWeight_ClickedAsync"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-66}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant= -66}"/>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

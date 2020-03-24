@@ -2,12 +2,12 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BMI.Controls.FlyoutHeader"
+             xmlns:local="clr-namespace:BMI;assembly=BMI"
              HeightRequest="200">
     <ContentView.Content>
         <Grid BackgroundColor="Black">
-            <Image Aspect="AspectFill"
-               Source="Flyout_Background.jpg"
-               Opacity="0.6"/>
+            <Image Source="{local:ImageResource BMI.Resources.Background.jpg}"
+                   Aspect="AspectFill"/>
             <Label Text="{Binding FullName}"
                TextColor="White"
                FontAttributes="Bold"
